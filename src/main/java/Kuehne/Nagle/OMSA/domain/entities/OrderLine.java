@@ -1,7 +1,6 @@
 package Kuehne.Nagle.OMSA.domain.entities;
 
-import Kuehne.Nagle.OMSA.domain.entities.Order;
-import Kuehne.Nagle.OMSA.domain.entities.Product;
+import Kuehne.Nagle.OMSA.domain.Order;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

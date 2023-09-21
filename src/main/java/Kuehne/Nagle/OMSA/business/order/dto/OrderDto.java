@@ -1,12 +1,12 @@
 package Kuehne.Nagle.OMSA.business.order.dto;
 
-import Kuehne.Nagle.OMSA.domain.entities.Order;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.Value;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -18,6 +18,6 @@ public class OrderDto implements Serializable {
     @NotNull
     Integer customerId;
     @NotNull
-    Instant orderDate;
+    LocalDate orderDate;
     List<OrderLineDto> orderLines;
 }

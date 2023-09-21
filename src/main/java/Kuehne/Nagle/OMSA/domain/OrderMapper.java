@@ -1,7 +1,6 @@
 package Kuehne.Nagle.OMSA.domain;
 
 import Kuehne.Nagle.OMSA.business.order.dto.OrderDto;
-import Kuehne.Nagle.OMSA.domain.entities.Order;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

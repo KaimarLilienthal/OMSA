@@ -1,12 +1,13 @@
 package Kuehne.Nagle.OMSA.business.order;
 
 import Kuehne.Nagle.OMSA.business.order.dto.OrderDto;
+import Kuehne.Nagle.OMSA.domain.Order;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -20,5 +21,12 @@ public class OrderController {
             description = "")
     private void addNewOrder(@RequestBody OrderDto orderDto) {
         orderservice.addNewOrder(orderDto);
+    }
+
+    @GetMapping("/order-by-date")
+    @Operation(summary = "Lisab uue Tellimuse",
+            description = "")
+    private List<Order> getOrdersByDate(@RequestParam LocalDate orderDate) {
+        return orderservice.getOrdersByDate(orderDate);
     }
 }

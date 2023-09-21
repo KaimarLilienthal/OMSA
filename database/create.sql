@@ -15,7 +15,7 @@ CREATE TABLE customer (
 -- Table: order
 CREATE TABLE "order" (
                          id serial  NOT NULL,
-                         order_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                         order_date date  NOT NULL,
                          customer_id int  NOT NULL,
                          CONSTRAINT order_pk PRIMARY KEY (id)
 );

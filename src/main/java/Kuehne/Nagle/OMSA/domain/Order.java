@@ -1,4 +1,4 @@
-package Kuehne.Nagle.OMSA.domain.entities;
+package Kuehne.Nagle.OMSA.domain;
 
 import Kuehne.Nagle.OMSA.domain.entities.Customer;
 import jakarta.persistence.*;
@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -20,7 +20,7 @@ public class Order {
 
     @NotNull
     @Column(name = "order_date", nullable = false)
-    private Instant orderDate;
+    private LocalDate orderDate;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
