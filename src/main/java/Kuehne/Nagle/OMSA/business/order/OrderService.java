@@ -39,7 +39,49 @@ public class OrderService {
         Customer customer = customerRepository.findById(customerId).get();
         order.setCustomer(customer);
         orderRepository.save(order);
+        createOrderLines(orderDto, order);
+    }
 
+    @Transactional
+    public List<OrderByDateDto> getOrdersByDate(LocalDate orderDate) {
+        List<Order> orders = orderRepository.findByOrderDate(orderDate);
+        List<OrderByDateDto> orderDtos = new ArrayList<>();
+        for (Order order : orders) {
+            OrderByDateDto orderByDateDto = orderMapper.toByDateDto(order);
+            List<OrderLine> orderLines = orderLineRepository.findByOrderId(order.getId());
+            List<OrderLineExtendedDto> orderLineDtos = getOrderLineExtendedDtos(orderLines);
+            orderByDateDto.setOrderLines(orderLineDtos);
+            orderDtos.add(orderByDateDto);
+        }
+        return orderDtos;
+    }
+
+    public List<OrdersDto> getOrdersByProduct(Integer productId) {
+        List<OrderLine> orderLines = orderLineRepository.findByProduct_Id(productId);
+        HashSet<Integer> orderIds = getUniqueOrderIds(orderLines);
+        ArrayList<Integer> uniqueOrderIds = new ArrayList<>(orderIds);
+        List<Order> orders = orderRepository.findAllById(uniqueOrderIds);
+        return orderMapper.toDtos(orders);
+
+    }
+
+    public List<OrdersDto> getOrdersByCustomer(Integer customerId) {
+        List<Order> orders = orderRepository.findByCustomerId(customerId);
+        return orderMapper.toDtos(orders);
+    }
+
+    private List<OrderLineExtendedDto> getOrderLineExtendedDtos(List<OrderLine> orderLines) {
+        List<OrderLineExtendedDto> orderLineDtos = orderLineMapper.toDto1(orderLines); // Assuming you have a mapper for OrderLine to OrderLineDto
+        for (OrderLineExtendedDto orderlineDto : orderLineDtos) {
+            Integer productId = orderlineDto.getProductId();
+            Product product = productRepository.findById(productId).get();
+            orderlineDto.setProductId(product.getId());
+            orderlineDto.setProductProductName(product.getProductName());
+        }
+        return orderLineDtos;
+    }
+
+    private void createOrderLines(OrderDto orderDto, Order order) {
         List<OrderLineDto> orderLines = orderDto.getOrderLines();
         for (OrderLineDto orderLineDto : orderLines) {
             Integer productId = orderLineDto.getProductId();
@@ -53,50 +95,13 @@ public class OrderService {
         }
     }
 
-    @Transactional
-    public List<OrderByDateDto> getOrdersByDate(LocalDate orderDate) {
-        List<Order> orders = orderRepository.findByOrderDate(orderDate);
-
-        List<OrderByDateDto> orderDtos = new ArrayList<>();
-
-
-        for (Order order : orders) {
-            OrderByDateDto orderByDateDto = orderMapper.toByDateDto(order);
-
-            List<OrderLine> orderLines = orderLineRepository.findByOrderId(order.getId());
-
-            List<OrderLineExtendedDto> orderLineDtos = orderLineMapper.toDto1(orderLines); // Assuming you have a mapper for OrderLine to OrderLineDto
-            for (OrderLineExtendedDto orderlineDto : orderLineDtos) {
-                Integer productId = orderlineDto.getProductId();
-                    Product product = productRepository.findById(productId).get();
-                        orderlineDto.setProductId(product.getId());
-                        orderlineDto.setProductProductName(product.getProductName());
-
-
-
-
-            }
-            orderByDateDto.setOrderLines(orderLineDtos);
-            orderDtos.add(orderByDateDto);
-        }
-        return orderDtos;
-    }
-
-    public List<OrdersDto> getOrdersByProduct(Integer productId) {
-        List<OrderLine> orderLines = orderLineRepository.findByProduct_Id(productId);
-
+    private static HashSet<Integer> getUniqueOrderIds(List<OrderLine> orderLines) {
         HashSet<Integer> orderIds = new HashSet<>();
         for (OrderLine orderLine : orderLines) {
             orderIds.add(orderLine.getOrder().getId());
         }
-        ArrayList<Integer> uniqueOrderIds = new ArrayList<>(orderIds);
-        List<Order> orders = orderRepository.findAllById(uniqueOrderIds);
-        return orderMapper.toDtos(orders);
-
-    }
-
-    public List<OrdersDto> getOrdersByCustomer(Integer customerId) {
-        List<Order> orders = orderRepository.findByCustomerId(customerId);
-        return orderMapper.toDtos(orders);
+        return orderIds;
     }
 }
+
+

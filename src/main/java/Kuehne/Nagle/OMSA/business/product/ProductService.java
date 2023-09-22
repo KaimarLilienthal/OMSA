@@ -16,10 +16,10 @@ public class ProductService {
     @Resource
     private ProductRepository productRepository;
     public void addNewProduct(ProductDto productDto) {
-        saveNewProduct(productDto);
+        createNewProduct(productDto);
     }
 
-    private void saveNewProduct(ProductDto productDto) {
+    private void createNewProduct(ProductDto productDto) {
         Product product = productMapper.toEntity(productDto);
         productRepository.save(product);
     }
