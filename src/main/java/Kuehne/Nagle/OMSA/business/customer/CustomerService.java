@@ -15,10 +15,10 @@ public class CustomerService {
     public CustomerRepository customerRepository;
 
     public void addNewCustomer(CustomerDto customerDto) {
-        mapAndSaveNewCustomer(customerDto);
+        saveNewCustomer(customerDto);
     }
 
-    private void mapAndSaveNewCustomer(CustomerDto customerDto) {
+    private void saveNewCustomer(CustomerDto customerDto) {
         Customer customer = customerMapper.toEntity(customerDto);
         customerRepository.save(customer);
     }
