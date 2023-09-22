@@ -11,6 +11,10 @@ public class OrderLineService {
     @Resource
     private OrderLineRepository orderLineRepository;
     public void newProductQuantity(Integer orderLineId, Integer newQuantity) {
+        changeProductQuantity(orderLineId, newQuantity);
+    }
+
+    private void changeProductQuantity(Integer orderLineId, Integer newQuantity) {
         OrderLine orderLine = orderLineRepository.findById(orderLineId).get();
         orderLine.setProductQuantity(newQuantity);
         orderLineRepository.save(orderLine);

@@ -15,8 +15,10 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/new")
-    @Operation(summary = "Kuvab listi kasutaja stuudiotest",
-            description = "Tagastab info koos studioId ja studioName'ga ning imageId'ga jne.MUUDA ÕIGEKS!!!")
+    @Operation(summary = "Add a New Product",
+            description = "This endpoint allows you to add a new product by providing product details in the request body. " +
+                    "The `ProductDto` should contain information such as product product name, sku code and unit price. " +
+                    "A successful request will create a new customer record.")
     public void addNewProduct(ProductDto productDto) {
         productService.addNewProduct(productDto);
     }

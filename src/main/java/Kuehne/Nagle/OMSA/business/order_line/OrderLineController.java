@@ -13,8 +13,11 @@ public class OrderLineController {
     private OrderLineService orderLineService;
 
     @PatchMapping("/change-quantity")
-    @Operation(summary = "Lisab uue Tellimuse",
-            description = "")
+    @Operation(summary = "Change Quantity of a Product in an Order Line ",
+            description = "This endpoint allows you to change the quantity of a product in an order line. " +
+                    "You need to specify the `orderLineId` to identify the order line you want to update, " +
+                    "and provide the `newQuantity` to set the new quantity of the product in the order line. " +
+                    "A successful request will update the quantity.")
     public void changeProductQuantity(@RequestParam Integer orderLineId, Integer newQuantity) {
         orderLineService.newProductQuantity(orderLineId, newQuantity);
     }

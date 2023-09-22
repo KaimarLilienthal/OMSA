@@ -17,8 +17,10 @@ public class CustomerController {
 
 
     @PostMapping("/new")
-    @Operation(summary = "Kuvab id-le vastava ürituse",
-            description = "Tagastab nimekirja üritusest koos infoga: id, eventName, eventDate, eventPlace, eventInfo ja status")
+    @Operation(summary = "Add a New Customer",
+            description = "This endpoint allows you to add a new customer by providing customer details in the request body. " +
+                    "The `CustomerDto` should contain information such as customer registration code, full name, e-mail and phone number. " +
+                    "A successful request will create a new customer record.")
     public void addNewCustomer(@RequestBody CustomerDto customerDto) {
         customerService.addNewCustomer(customerDto);
     }
