@@ -33,6 +33,7 @@ public class OrderController {
     private List<OrderByDateDto> getOrdersByDate(@RequestParam LocalDate orderDate) {
         return orderservice.getOrdersByDate(orderDate);
     }
+
     @GetMapping("/find-by-product")
     @Operation(summary = "Get Orders by Product Id",
             description = "This endpoint retrieves a list of orders that contain the specified product ID. " +

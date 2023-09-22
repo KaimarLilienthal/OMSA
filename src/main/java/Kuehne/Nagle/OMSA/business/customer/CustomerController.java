@@ -15,7 +15,6 @@ public class CustomerController {
     @Resource
     private CustomerService customerService;
 
-
     @PostMapping("/new")
     @Operation(summary = "Add a New Customer",
             description = "This endpoint allows you to add a new customer by providing customer details in the request body. " +

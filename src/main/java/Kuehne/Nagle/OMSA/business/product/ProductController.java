@@ -22,4 +22,5 @@ public class ProductController {
     public void addNewProduct(ProductDto productDto) {
         productService.addNewProduct(productDto);
     }
+
 }
