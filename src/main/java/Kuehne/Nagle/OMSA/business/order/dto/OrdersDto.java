@@ -6,19 +6,14 @@ import lombok.Data;
 import lombok.Value;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * DTO for {@link Order}
  */
 @Data
-@Value
-public class OrderDto implements Serializable {
-    @NotNull
-    Integer customerId;
-    @NotNull
+public class OrdersDto implements Serializable {
+    Integer id;
     LocalDate orderDate;
-    List<OrderLineDto> orderLines;
+    Integer customerId;
 }

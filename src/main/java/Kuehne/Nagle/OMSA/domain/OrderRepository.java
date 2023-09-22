@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
+    @Query("select o from Order o where o.customer.id = ?1")
+    List<Order> findByCustomerId(Integer id);
     @Query("select o from Order o where o.orderDate = ?1")
     List<Order> findByOrderDate(LocalDate orderDate);
 }

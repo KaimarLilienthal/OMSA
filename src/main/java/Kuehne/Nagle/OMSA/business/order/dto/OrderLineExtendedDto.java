@@ -2,22 +2,22 @@ package Kuehne.Nagle.OMSA.business.order.dto;
 
 import Kuehne.Nagle.OMSA.domain.entities.OrderLine;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * DTO for {@link OrderLine}
  */
 @Data
-@AllArgsConstructor
-public class OrderLineDto implements Serializable {
-    @NotNull
+public class OrderLineExtendedDto implements Serializable {
     Integer id;
+    @NotNull
     Integer productQuantity;
+    Integer orderId;
+    LocalDate orderOrderDate;
     Integer productId;
-    String productName;
-
+    String productProductName;
 }
