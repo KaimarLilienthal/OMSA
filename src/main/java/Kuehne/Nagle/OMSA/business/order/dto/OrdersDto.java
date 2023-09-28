@@ -1,9 +1,7 @@
 package Kuehne.Nagle.OMSA.business.order.dto;
 
-import Kuehne.Nagle.OMSA.domain.Order;
-import jakarta.validation.constraints.NotNull;
+import Kuehne.Nagle.OMSA.domain.entities.Order;
 import lombok.Data;
-import lombok.Value;
 
 import java.io.Serializable;
 import java.time.LocalDate;

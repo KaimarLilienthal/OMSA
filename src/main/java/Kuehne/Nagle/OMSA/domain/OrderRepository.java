@@ -1,5 +1,6 @@
 package Kuehne.Nagle.OMSA.domain;
 
+import Kuehne.Nagle.OMSA.domain.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

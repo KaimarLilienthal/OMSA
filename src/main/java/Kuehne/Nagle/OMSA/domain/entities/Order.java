@@ -1,4 +1,4 @@
-package Kuehne.Nagle.OMSA.domain;
+package Kuehne.Nagle.OMSA.domain.entities;
 
 import Kuehne.Nagle.OMSA.domain.entities.Customer;
 import jakarta.persistence.*;

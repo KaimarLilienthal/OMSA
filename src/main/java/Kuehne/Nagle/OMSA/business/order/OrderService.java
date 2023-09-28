@@ -3,6 +3,7 @@ package Kuehne.Nagle.OMSA.business.order;
 import Kuehne.Nagle.OMSA.business.order.dto.*;
 import Kuehne.Nagle.OMSA.domain.*;
 import Kuehne.Nagle.OMSA.domain.entities.Customer;
+import Kuehne.Nagle.OMSA.domain.entities.Order;
 import Kuehne.Nagle.OMSA.domain.entities.OrderLine;
 import Kuehne.Nagle.OMSA.domain.entities.Product;
 import jakarta.annotation.Resource;

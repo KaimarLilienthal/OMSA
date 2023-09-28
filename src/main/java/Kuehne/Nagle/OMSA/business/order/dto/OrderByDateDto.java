@@ -1,6 +1,6 @@
 package Kuehne.Nagle.OMSA.business.order.dto;
 
-import Kuehne.Nagle.OMSA.domain.Order;
+import Kuehne.Nagle.OMSA.domain.entities.Order;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
