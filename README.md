@@ -88,18 +88,19 @@ These additional references should also help you:
    - Possible to test API-s.
 
 ## Folder Structure:
-- `src`: Contains the Java source code.
+- `src`: contains the Java source code.
   it's divided into 'business' and 'domain'
-  #### **business**
-  contains controllers, services and dtos separately for each table
-  #### **domain**
-  contains tables entities, mappers and repositories.
+  #### **business:**
+      contains controllers, services and dtos separately for each table
+  #### **domain:**
+      contains tables entities, mappers and repositories.
 
 - `database`: 
-  contains SQL scripts for database setup and reset.
+contains SQL scripts for database setup and reset.
 
 ## Testing:
-for testing API-s I used **Swagger**
+     SpringBootTests are located in same folders with controllers under business directory.
+     for testing API-s is possible to use also Swagger
 
 ## Contact:
-If you have any questions or feedback, please contact me at [kaimarlilienthal@gmail.com].
+  If you have any questions or feedback, please contact me at [kaimarlilienthal@gmail.com].
