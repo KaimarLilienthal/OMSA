@@ -1,4 +1,4 @@
-package Kuehne.Nagle.OMSA.business.order.dto;
+package Kuehne.Nagle.OMSA.business.order_line.dto;
 
 import Kuehne.Nagle.OMSA.domain.entities.OrderLine;
 import jakarta.validation.constraints.NotNull;

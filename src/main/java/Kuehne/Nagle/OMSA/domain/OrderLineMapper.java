@@ -1,7 +1,7 @@
 package Kuehne.Nagle.OMSA.domain;
 
-import Kuehne.Nagle.OMSA.business.order.dto.OrderLineDto;
-import Kuehne.Nagle.OMSA.business.order.dto.OrderLineExtendedDto;
+import Kuehne.Nagle.OMSA.business.order_line.dto.OrderLineDto;
+import Kuehne.Nagle.OMSA.business.order_line.dto.OrderLineExtendedDto;
 import Kuehne.Nagle.OMSA.domain.entities.OrderLine;
 import org.mapstruct.*;
 

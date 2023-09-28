@@ -1,6 +1,8 @@
 package Kuehne.Nagle.OMSA.business.order;
 
 import Kuehne.Nagle.OMSA.business.order.dto.*;
+import Kuehne.Nagle.OMSA.business.order_line.dto.OrderLineDto;
+import Kuehne.Nagle.OMSA.business.order_line.dto.OrderLineExtendedDto;
 import Kuehne.Nagle.OMSA.domain.*;
 import Kuehne.Nagle.OMSA.domain.entities.Customer;
 import Kuehne.Nagle.OMSA.domain.entities.Order;
