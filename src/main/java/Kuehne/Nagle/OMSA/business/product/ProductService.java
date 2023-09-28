@@ -7,6 +7,9 @@ import Kuehne.Nagle.OMSA.domain.entities.Product;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+/**
+ * The ProductService class provides business logic for managing product-related operations.
+ */
 @Service
 public class ProductService {
 
@@ -16,6 +19,11 @@ public class ProductService {
     @Resource
     private ProductRepository productRepository;
 
+    /**
+     * Adds a new product based on the provided product DTO.
+     *
+     * @param productDto The ProductDto containing product information.
+     */
     public void addNewProduct(ProductDto productDto) {
         createNewProduct(productDto);
     }

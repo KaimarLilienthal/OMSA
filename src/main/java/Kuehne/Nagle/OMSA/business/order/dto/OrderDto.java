@@ -14,7 +14,6 @@ import java.util.List;
  * DTO for {@link Order}
  */
 @Data
-@Value
 public class OrderDto implements Serializable {
     @NotNull
     Integer customerId;

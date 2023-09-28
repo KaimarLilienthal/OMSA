@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 /**
  * The CustomerController class is responsible for handling HTTP requests related to customer management.
  */
@@ -16,6 +17,7 @@ public class CustomerController {
 
     @Resource
     private CustomerService customerService;
+
     /**
      * Adds a new customer based on the provided customer details.
      *

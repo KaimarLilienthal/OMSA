@@ -5,12 +5,16 @@ import Kuehne.Nagle.OMSA.domain.CustomerMapper;
 import Kuehne.Nagle.OMSA.domain.CustomerRepository;
 import Kuehne.Nagle.OMSA.domain.entities.Customer;
 import jakarta.annotation.Resource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
 /**
  * The CustomerService class provides business logic for managing customer-related operations.
  */
+
 @Service
 public class CustomerService {
+
     @Resource
     public CustomerMapper customerMapper;
     @Resource

@@ -4,6 +4,8 @@ import Kuehne.Nagle.OMSA.domain.entities.Customer;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -11,7 +13,7 @@ import java.io.Serializable;
 /**
  * DTO for {@link Customer}
  */
-@Value
+
 @Data
 public class CustomerDto implements Serializable {
     @NotNull
@@ -25,4 +27,6 @@ public class CustomerDto implements Serializable {
     @NotNull
     @Size(max = 20)
     String phoneNumber;
+
+
 }

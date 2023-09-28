@@ -4,6 +4,8 @@ import Kuehne.Nagle.OMSA.domain.entities.Product;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -11,7 +13,8 @@ import java.io.Serializable;
 /**
  * DTO for {@link Product}
  */
-@Value
+@Getter
+@Setter
 @Data
 public class ProductDto implements Serializable {
     @NotNull

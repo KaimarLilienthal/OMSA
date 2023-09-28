@@ -1,6 +1,8 @@
 package Kuehne.Nagle.OMSA.business.order;
 
-import Kuehne.Nagle.OMSA.business.order.dto.*;
+import Kuehne.Nagle.OMSA.business.order.dto.OrderByDateDto;
+import Kuehne.Nagle.OMSA.business.order.dto.OrderDto;
+import Kuehne.Nagle.OMSA.business.order.dto.OrdersDto;
 import Kuehne.Nagle.OMSA.business.order_line.dto.OrderLineDto;
 import Kuehne.Nagle.OMSA.business.order_line.dto.OrderLineExtendedDto;
 import Kuehne.Nagle.OMSA.domain.*;
@@ -18,6 +20,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * The OrderService class provides business logic for managing order-related operations.
+ */
 @Data
 @Service
 public class OrderService {
@@ -35,6 +40,11 @@ public class OrderService {
     @Resource
     private OrderLineMapper orderLineMapper;
 
+    /**
+     * Adds a new order based on the provided order DTO.
+     *
+     * @param orderDto The OrderDto containing order information.
+     */
     @Transactional
     public void addNewOrder(OrderDto orderDto) {
         Order order = orderMapper.toEntity(orderDto);
@@ -45,6 +55,12 @@ public class OrderService {
         createOrderLines(orderDto, order);
     }
 
+    /**
+     * Retrieves a list of orders based on the specified order date.
+     *
+     * @param orderDate The date used to filter orders.
+     * @return A list of OrderByDateDto objects representing orders on the specified date.
+     */
     @Transactional
     public List<OrderByDateDto> getOrdersByDate(LocalDate orderDate) {
         List<Order> orders = orderRepository.findByOrderDate(orderDate);
@@ -59,6 +75,12 @@ public class OrderService {
         return orderDtos;
     }
 
+    /**
+     * Retrieves a list of orders that contain the specified product ID.
+     *
+     * @param productId The product ID used to filter orders.
+     * @return A list of OrdersDto objects representing orders containing the specified product.
+     */
     public List<OrdersDto> getOrdersByProduct(Integer productId) {
         List<OrderLine> orderLines = orderLineRepository.findByProduct_Id(productId);
         HashSet<Integer> orderIds = getUniqueOrderIds(orderLines);
@@ -68,6 +90,12 @@ public class OrderService {
 
     }
 
+    /**
+     * Retrieves a list of orders associated with the specified customer ID.
+     *
+     * @param customerId The customer ID used to filter orders.
+     * @return A list of OrdersDto objects representing orders associated with the specified customer.
+     */
     public List<OrdersDto> getOrdersByCustomer(Integer customerId) {
         List<Order> orders = orderRepository.findByCustomerId(customerId);
         return orderMapper.toDtos(orders);
